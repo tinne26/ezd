@@ -1,6 +1,6 @@
 # ezd
 
-
+[![Go Reference](https://pkg.go.dev/badge/github.com/tinne26/ezd.svg)](https://pkg.go.dev/github.com/tinne26/ezd)
 
 Easy drawing on Ebitengine with anchors:
 
