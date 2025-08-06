@@ -72,8 +72,8 @@ func (a Anchor) TranslateF32(bounds image.Rectangle, newAnchor Anchor) (float32,
 
 // TranslateInt returns the approximate translation offset from the current anchor
 // to newAnchor for the given bounds. Anchors involving centered positions can have
-// lossy translations, so [TranslateF64]() is recommended for translation chains.
-// Alternatively, this is safe if bounds are even-sized.
+// lossy translations, so [Anchor.TranslateF64]() is recommended for translation
+// chains. Alternatively, this is safe if bounds are even-sized.
 //
 // Low-level method for advanced use cases, rarely needed by ezd users.
 func (a Anchor) TranslateInt(bounds image.Rectangle, newAnchor Anchor) (int, int) {
