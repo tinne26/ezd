@@ -49,7 +49,7 @@ func (a *App) Update() error {
 	}
 	if a.anchor != preAnchor {
 		// NOTE: this adjustment is not exact, but it's ok for the example
-		xOffset, yOffset := preAnchor.TranslateF64(a.image.Bounds(), a.anchor)
+		xOffset, yOffset := preAnchor.Translate(a.image.Bounds(), a.anchor)
 		a.x += int(xOffset * a.scale)
 		a.y += int(yOffset * a.scale)
 	}
@@ -72,7 +72,7 @@ func (a *App) Draw(canvas *ebiten.Image) {
 
 	// draw image using current anchor
 	a.drawer.Filter = ebiten.FilterLinear
-	a.drawer.DrawScaledAtF64(a.image, a.anchor, canvas, float64(a.x), float64(a.y), a.scale)
+	a.drawer.DrawScaledAt(a.image, a.anchor, canvas, float64(a.x), float64(a.y), a.scale)
 
 	// draw anchor point as a 4x4 filled area
 	anchorRect := image.Rect(a.x-2, a.y-2, a.x+2, a.y+2)

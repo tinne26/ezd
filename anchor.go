@@ -46,11 +46,11 @@ func (a Anchor) String() string {
 	}
 }
 
-// TranslateF64 returns the translation offset from the current anchor to
+// Translate returns the translation offset from the current anchor to
 // newAnchor for the given bounds.
 //
 // Low-level method for advanced use cases, rarely needed by ezd users.
-func (a Anchor) TranslateF64(bounds image.Rectangle, newAnchor Anchor) (float64, float64) {
+func (a Anchor) Translate(bounds image.Rectangle, newAnchor Anchor) (float64, float64) {
 	// between a single axis of two aligns, there are only 3 possible
 	// displacements: no move, half size (+/-), full size (+/-)
 	var displacement = [5]float64{-1.0, -0.5, 0.0, 0.5, 1.0}
@@ -59,20 +59,9 @@ func (a Anchor) TranslateF64(bounds image.Rectangle, newAnchor Anchor) (float64,
 	return horzDispl, vertDispl
 }
 
-// TranslateF32 returns the translation offset from the current anchor to
-// newAnchor for the given bounds.
-//
-// Low-level method for advanced use cases, rarely needed by ezd users.
-func (a Anchor) TranslateF32(bounds image.Rectangle, newAnchor Anchor) (float32, float32) {
-	var displacement = [5]float32{-1.0, -0.5, 0.0, 0.5, 1.0}
-	horzDispl := float32(bounds.Dx()) * displacement[2+((newAnchor&0b11)-(a&0b11))]
-	vertDispl := float32(bounds.Dy()) * displacement[2+((newAnchor>>2)-(a>>2))]
-	return horzDispl, vertDispl
-}
-
 // TranslateInt returns the approximate translation offset from the current anchor
 // to newAnchor for the given bounds. Anchors involving centered positions can have
-// lossy translations, so [Anchor.TranslateF64]() is recommended for translation
+// lossy translations, so [Anchor.Translate]() is recommended for translation
 // chains. Alternatively, this is safe if bounds are even-sized.
 //
 // Low-level method for advanced use cases, rarely needed by ezd users.

@@ -62,7 +62,7 @@ func (a *App) Draw(canvas *ebiten.Image) {
 	canvas.Fill(color.Black)
 
 	// draw image using current anchor
-	a.drawer.DrawAt(a.image, a.anchor, canvas, a.x, a.y)
+	a.drawer.DrawAtInt(a.image, a.anchor, canvas, a.x, a.y)
 
 	// draw anchor point as a 4x4 filled area
 	anchorRect := image.Rect(a.x-2, a.y-2, a.x+2, a.y+2)

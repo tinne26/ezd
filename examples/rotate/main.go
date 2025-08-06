@@ -75,7 +75,7 @@ func (a *App) Draw(canvas *ebiten.Image) {
 
 	// draw image using current anchor
 	a.drawer.Filter = ebiten.FilterLinear // optional
-	a.drawer.DrawRotatedAtF64(a.image, a.anchor, canvas, float64(a.x), float64(a.y), a.rads)
+	a.drawer.DrawRotatedAt(a.image, a.anchor, canvas, float64(a.x), float64(a.y), a.rads)
 
 	// draw anchor point as a 4x4 filled area
 	anchorRect := image.Rect(a.x-2, a.y-2, a.x+2, a.y+2)
