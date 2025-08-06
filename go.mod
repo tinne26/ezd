@@ -1,6 +1,6 @@
 module github.com/tinne26/ezd
 
-go 1.24.3
+go 1.23.3
 
 require github.com/hajimehoshi/ebiten/v2 v2.8.8
 
